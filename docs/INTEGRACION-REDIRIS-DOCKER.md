@@ -62,7 +62,7 @@ Instalacion, con el paquete publicado en Packagist:
 
 ```dockerfile
 WORKDIR /var/simplesamlphp
-RUN composer require laarino/simplesamlphp-module-oid4vp:^1.0 \
+RUN composer require rediris-es/simplesamlphp-module-oid4vp:^1.0 \
         --no-interaction --update-no-dev --no-progress \
  && composer dump-autoload --optimize --no-dev
 ```

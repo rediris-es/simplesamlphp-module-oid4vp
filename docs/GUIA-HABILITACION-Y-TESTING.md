@@ -108,7 +108,7 @@ Si el modulo se gestiona como parte del proyecto principal de SimpleSAMLphp, se 
 
 ```bash
 cd /var/www/html/simplesamlphp/
-composer require laarino/simplesamlphp-module-oid4vp
+composer require rediris-es/simplesamlphp-module-oid4vp
 ```
 
 ---

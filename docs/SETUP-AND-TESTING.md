@@ -110,7 +110,7 @@ project root instead:
 
 ```bash
 cd /var/www/html/simplesamlphp/
-composer require laarino/simplesamlphp-module-oid4vp
+composer require rediris-es/simplesamlphp-module-oid4vp
 ```
 
 ---
