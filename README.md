@@ -76,6 +76,17 @@ Designed for universities and educational institutions.
 - HTTPS with valid certificate
 - `/direct_post` endpoint accessible from the wallet network
 
+> **Security note — run a patched PHP.** `/request_uri` and `/direct_post` are anonymous
+> and Internet-facing by design, and PHP parses the body of every POST before this module
+> runs, so a vulnerability in the PHP runtime is reachable through them regardless of what
+> the module accepts. As of October 2026, CVE-2026-109618 and CVE-2026-109619
+> (unauthenticated remote code execution, CVSS 9.2) require **PHP ≥ 8.5.12, ≥ 8.4.27,
+> ≥ 8.3.36 or ≥ 8.2.35**. `composer.json` deliberately does not pin these patch levels:
+> Debian and RHEL backport the fixes without changing the version string, and a patched
+> 8.2.x would otherwise be refused. Until you can upgrade, PHP's maintainers recommend
+> `session.upload_progress.enabled = 0`, `post_max_size = 8M`, `upload_max_filesize` below
+> it, and `memory_limit = -1` only behind an external memory limit (a container cgroup).
+
 ### Installation
 
 ```bash
@@ -311,6 +322,18 @@ Diseñado para universidades e instituciones educativas.
 - SimpleSAMLphp >= 2.0
 - HTTPS con certificado válido
 - Endpoint `/direct_post` accesible desde la red de la wallet
+
+> **Nota de seguridad: usa un PHP parcheado.** `/request_uri` y `/direct_post` son anónimos
+> y están expuestos a Internet por diseño, y PHP analiza el cuerpo de cualquier POST antes
+> de que este módulo se ejecute, así que una vulnerabilidad del intérprete es alcanzable a
+> través de ellos con independencia de lo que el módulo acepte. A octubre de 2026,
+> CVE-2026-109618 y CVE-2026-109619 (ejecución remota de código sin autenticación,
+> CVSS 9,2) exigen **PHP ≥ 8.5.12, ≥ 8.4.27, ≥ 8.3.36 o ≥ 8.2.35**. `composer.json` no
+> fija estos niveles de parche a propósito: Debian y RHEL retroportan las correcciones sin
+> cambiar la cadena de versión, y un 8.2.x parcheado quedaría rechazado. Mientras no puedas
+> actualizar, el fabricante de PHP recomienda `session.upload_progress.enabled = 0`,
+> `post_max_size = 8M`, `upload_max_filesize` por debajo, y `memory_limit = -1` solo detrás
+> de un límite externo de memoria (el cgroup de un contenedor).
 
 ### Instalación
 
